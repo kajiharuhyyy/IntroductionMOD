@@ -1,5 +1,6 @@
 package com.github.kajiharuhyyy.introductionmod;
 
+import com.github.kajiharuhyyy.introductionmod.block.IntroductionBlocks;
 import com.github.kajiharuhyyy.introductionmod.item.IntroductionItems;
 import com.github.kajiharuhyyy.introductionmod.item.IntroductionTabs;
 import com.mojang.logging.LogUtils;
@@ -35,6 +36,8 @@ public class IntroductionMod
 
         // クリエティブタブレジストリをイベントバスに登録
         IntroductionTabs.register(modEventBus);
+
+        IntroductionBlocks.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
