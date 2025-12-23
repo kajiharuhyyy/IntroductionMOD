@@ -26,7 +26,7 @@ public class IntroductionBlocks {
 
     public static final RegistryObject<Block> RAW_ORIHALCON_BLOCK =
             registerBlockItem("raw_orihalcon_block",
-                    () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK).sound(SoundType.ANVIL)));
+                    () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK).sound(SoundType.ANVIL).noLootTable()));
 
     public static <T extends Block> RegistryObject<T> registerBlockItem(String name, Supplier<T> supplier) {
         RegistryObject<T> block = BLOCKS.register(name, supplier);

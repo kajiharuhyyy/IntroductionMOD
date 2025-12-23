@@ -1,13 +1,10 @@
-package com.github.kajiharuhyyy.introductionmod.datagen;
+package com.github.kajiharuhyyy.introductionmod.datagen.server;
 
 import com.github.kajiharuhyyy.introductionmod.block.IntroductionBlocks;
 import com.github.kajiharuhyyy.introductionmod.item.IntroductionItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
-
-import javax.annotation.Nullable;
 
 public class IntroductionRecipeProvider extends RecipeProvider {
     public IntroductionRecipeProvider(PackOutput pOutput) {

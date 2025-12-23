@@ -1,4 +1,4 @@
-package com.github.kajiharuhyyy.introductionmod.datagen;
+package com.github.kajiharuhyyy.introductionmod.datagen.client;
 
 import com.github.kajiharuhyyy.introductionmod.IntroductionMod;
 import com.github.kajiharuhyyy.introductionmod.block.IntroductionBlocks;
