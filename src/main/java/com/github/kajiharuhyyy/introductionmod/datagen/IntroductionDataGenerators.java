@@ -6,6 +6,7 @@ import com.github.kajiharuhyyy.introductionmod.datagen.client.IntroductionBlockS
 import com.github.kajiharuhyyy.introductionmod.datagen.client.IntroductionItemModelProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.client.JAJPLanguageProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.server.IntroductionBlockTagsProvider;
+import com.github.kajiharuhyyy.introductionmod.datagen.server.IntroductionGlobalLootModifierProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.server.IntroductionRecipeProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.server.loot.IntroductionLootTables;
 import net.minecraft.core.HolderLookup;
@@ -34,10 +35,17 @@ public class IntroductionDataGenerators {
         generator.addProvider(event.includeClient(),
                 new IntroductionBlockStateProvider(packOutput, existingFileHelper));
 
+        // 言語ファイル（日本語）
         generator.addProvider(event.includeClient(), new ENUSLanguageProvider(packOutput));
+        // 言語ファイル（English）
         generator.addProvider(event.includeClient(), new JAJPLanguageProvider(packOutput));
+        // レシピ
         generator.addProvider(event.includeServer(), new IntroductionRecipeProvider(packOutput));
+        // ルートテーブル
         generator.addProvider(event.includeServer(), IntroductionLootTables.create(packOutput));
+        // ブロックタグ
         generator.addProvider(event.includeServer(), new IntroductionBlockTagsProvider(packOutput, lookUpProvider, existingFileHelper));
+        // GlobalLootModifier
+        generator.addProvider(event.includeServer(), new IntroductionGlobalLootModifierProvider(packOutput));
     }
 }

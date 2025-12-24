@@ -3,6 +3,7 @@ package com.github.kajiharuhyyy.introductionmod;
 import com.github.kajiharuhyyy.introductionmod.block.IntroductionBlocks;
 import com.github.kajiharuhyyy.introductionmod.item.IntroductionItems;
 import com.github.kajiharuhyyy.introductionmod.item.IntroductionTabs;
+import com.github.kajiharuhyyy.introductionmod.loot.IntroductionLootModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -37,7 +38,11 @@ public class IntroductionMod
         // クリエティブタブレジストリをイベントバスに登録
         IntroductionTabs.register(modEventBus);
 
+        // ブロックレジストリをイベントバスに登録
         IntroductionBlocks.register(modEventBus);
+
+        // GlobalLootModifierレジストリをイベントバスに登録
+        IntroductionLootModifiers.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
