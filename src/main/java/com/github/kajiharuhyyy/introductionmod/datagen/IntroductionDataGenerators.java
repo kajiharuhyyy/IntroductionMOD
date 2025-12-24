@@ -5,14 +5,18 @@ import com.github.kajiharuhyyy.introductionmod.datagen.client.ENUSLanguageProvid
 import com.github.kajiharuhyyy.introductionmod.datagen.client.IntroductionBlockStateProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.client.IntroductionItemModelProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.client.JAJPLanguageProvider;
+import com.github.kajiharuhyyy.introductionmod.datagen.server.IntroductionBlockTagsProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.server.IntroductionRecipeProvider;
 import com.github.kajiharuhyyy.introductionmod.datagen.server.loot.IntroductionLootTables;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mod.EventBusSubscriber(modid = IntroductionMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class IntroductionDataGenerators {
@@ -22,6 +26,7 @@ public class IntroductionDataGenerators {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        CompletableFuture<HolderLookup.Provider> lookUpProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeClient(),
                 new IntroductionItemModelProvider(packOutput, existingFileHelper));
@@ -33,5 +38,6 @@ public class IntroductionDataGenerators {
         generator.addProvider(event.includeClient(), new JAJPLanguageProvider(packOutput));
         generator.addProvider(event.includeServer(), new IntroductionRecipeProvider(packOutput));
         generator.addProvider(event.includeServer(), IntroductionLootTables.create(packOutput));
+        generator.addProvider(event.includeServer(), new IntroductionBlockTagsProvider(packOutput, lookUpProvider, existingFileHelper));
     }
 }
